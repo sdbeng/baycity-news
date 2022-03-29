@@ -16,3 +16,20 @@ To get started with Handlebars.js, you first need to install the correct depende
 
 IMPORTANT
 Your file/folder structure MUST be set up this way for Handlebars.js to work correctly. You will always have a main layout located at (and named) views/layouts/main.handlebars. All other template files will go directly in the views folder (i.e. views/welcome.handlebars).
+
+## Introducing the Model-View-Controller Paradigm
+Why does Handlebars.js require a views folder? Why can't this be named something else? The reason for this is that Handlebars.js is meant to fit into an existing architectural paradigm called Model-View-Controller, or MVC.
+
+Let's rename the routes folder to controllers so the MVC structure is more obvious.
+
+Because you renamed the folder, you'll need to update the reference in server.js to what's shown in the following code:
+
+`const routes = require('./controllers/');`
+
+MVC is a popular software-design pattern that organizes your app into the three following separate concerns:
+
+Models: the core data of your app
+
+Views: the UI components, such as your HTML layouts
+
+Controllers: the link between your models and views
