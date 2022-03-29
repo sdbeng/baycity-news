@@ -33,3 +33,22 @@ Models: the core data of your app
 Views: the UI components, such as your HTML layouts
 
 Controllers: the link between your models and views
+
+## Let's add some data to the homepage. The res.render() method can accept a second argument, an object, which includes all of the data you want to pass to your template. In home-routes.js, update the homepage route to look like the following code:
+```js
+router.get('/', (req, res) => {
+  res.render('homepage', {
+    id: 1,
+    post_url: 'https://handlebarsjs.com/guide/',
+    title: 'Handlebars Docs',
+    created_at: new Date(),
+    vote_count: 10,
+    comments: [{}, {}],
+    user: {
+      username: 'test_user'
+    }
+  });
+});
+```
+
+##
