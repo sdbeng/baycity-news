@@ -13,3 +13,6 @@ Unfortunately, writing HTML content as a string isn't very intuitive or maintain
 To get started with Handlebars.js, you first need to install the correct dependency by typing the following command:
 
 `npm install express-handlebars`
+
+IMPORTANT
+Your file/folder structure MUST be set up this way for Handlebars.js to work correctly. You will always have a main layout located at (and named) views/layouts/main.handlebars. All other template files will go directly in the views folder (i.e. views/welcome.handlebars).
