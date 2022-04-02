@@ -48,6 +48,34 @@ router.post('/', (req, res) => {
       });
   });
 
+  //login route
+  router.post('/login', (req, res) => {
+    //query operation
+    //expects {email:'someemail@test.ca', password:'32134'} i.e
+    User.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(dbUserData => {
+      if(!dbUserData){
+        res.status(400).json({message: 'No user found with that eamil in the database'})
+        return;
+      }
+      
+      //Verify user: next step will be to verify the user's identity by matching the password from the user and the hashed password in the database. This will be done in the Promise of the query
+      const validPassword = dbUserData.checkPassword(req.body.password);
+      
+      if(!validPassword){
+        res.status(400).json({message: 'Incorrect password!'})
+        return;
+      }
+      //otherwise return the user object w/ data
+      res.json({user: dbUserData, message: 'You are now logged in!!'})
+
+
+    })
+  })
+
 // PUT /api/users/1
 router.put('/:id', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
